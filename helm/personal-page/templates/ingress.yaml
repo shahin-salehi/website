@@ -2,8 +2,8 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: homebuddy-ingress
-  namespace: homebuddy
+  name: website-ingress
+  namespace: website 
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
@@ -15,7 +15,7 @@ spec:
   tls:
   - hosts:
     - shahin.conamur-software.com
-    secretName: tls-key
+    secretName: website-tls-key
   rules:
   - host: shahin.conamur-software.com
     http:

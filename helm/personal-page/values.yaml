@@ -11,7 +11,9 @@ image:
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: 0.1.0 
-
+  # basic auth
+  pullSecret:
+    name: registry-secret
 # This is for setting up a service more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/
 service:
   name: website 
