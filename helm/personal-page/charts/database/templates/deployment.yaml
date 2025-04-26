@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: database
+spec:
+  selector:
+    matchLabels:
+      app: database
+  template:
+    metadata:
+      labels:
+        app: database
+    spec:
+      containers:
+      - name: database
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}" 
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: {{ .Values.deployment.container.port }}
+
+        env:
+        - name: PGDATA
+          value: /var/lib/postgresql/data/pgdata # path from imagedocs
+        - name: POSTGRES_DB
+          value: website 
+        - name: POSTGRES_USER
+          valueFrom:
+            secretKeyRef:
+              name: postgres-secret
+              key: POSTGRES_USER
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: postgres-secret
+              key: POSTGRES_PASSWORD
+
+        volumeMounts:
+          - mountPath: /var/lib/postgresql/data
+            name: postgresdata
+
+
+      volumes:
+        - name: postgresdata
+          persistentVolumeClaim:
+            claimName: database-volume-claim
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: database-volume-claim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi

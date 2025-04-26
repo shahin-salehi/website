@@ -1,0 +1,32 @@
+package pages
+
+
+import "github.com/shahin-salehi/website/internal/web/components"
+
+templ Contact() {
+    <!DOCTYPE html>
+<html lang="en">
+    @components.Head("Contact | Shahin")
+
+<body>
+    @components.Header()
+  <main class="container contact">
+    <h2>Get in Touch</h2>
+    <p>I’ve built a private inbox specifically to store messages sent through this site. If you decide to reach out, your message will land there.</p>
+
+    <form action="/api/message" method="POST" class="json-form" data-feedback-id="message-feedback">
+
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="6" required></textarea>
+
+      <button type="submit" class="btn">Send Message</button>
+      <div id="message-feedback"></div>
+    </form>
+  </main>
+
+    @components.Footer()
+</body>
+</html>
+
+}

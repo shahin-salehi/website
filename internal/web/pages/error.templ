@@ -1,0 +1,20 @@
+package pages
+
+import "github.com/shahin-salehi/website/internal/web/components"
+
+templ InternalServerError() {
+    <!DOCTYPE html>
+    <html lang="en">
+    @components.Head("Server Error | Shahin")
+
+    <body>
+        @components.Header()
+        <main class="container center-text">
+        <h1>500 💥</h1>
+        <h2>Something Went Wrong</h2>
+            <p>We’re experiencing an issue on our end. Please try again later.</p> 
+        </main>
+        @components.Footer()
+    </body>
+    </html>
+}

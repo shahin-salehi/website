@@ -1,0 +1,33 @@
+package pages 
+
+import "github.com/shahin-salehi/website/internal/web/components"
+
+templ Index(){
+    <!DOCTYPE html>
+    <html lang="en">
+    @components.Head("Home | Shahin")
+    <body>
+    @components.Header()
+    <section class="hero container">
+        <h2>Hello, I’m Shahin.</h2>
+        <p>I spend most of my time writing software. The source code for this website is included <a href=""i>here</a>. This webpage is hosted on my personal kubernetes cluster.</p>
+        <!-- Trigger -->
+        <a class="btn" onclick="toggleCV()">Read my CV</a>
+    </section>
+
+
+
+    <!-- Hidden CV Section -->
+    <section id="cvSection" class="cv-section container" style="display: none;">
+        <h2>Curriculum Vitae</h2>
+        <embed src="/static/shahin-cv.pdf" type="application/pdf" width="100%" height="800px" />
+    </section>
+
+
+    @components.Footer()
+    <script src="/static/script.js"></script>
+    </body>
+    </html>
+
+
+}

@@ -1,0 +1,19 @@
+package pages
+
+import "github.com/shahin-salehi/website/internal/web/components"
+
+templ DataDeleted() {
+    <!DOCTYPE html>
+    <html lang="en">
+    @components.Head("Data Deleted | Shahin")
+
+    <body>
+        @components.Header()
+        <main class="container">
+            <h2>✅ Your Data Has Been Deleted</h2>
+            <p>We have successfully deleted your stored data as requested. Your account remains active and you can continue using our service.</p> 
+        </main>
+        @components.Footer()
+    </body>
+    </html>
+}

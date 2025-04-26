@@ -1,0 +1,49 @@
+package pages
+
+import "github.com/shahin-salehi/website/internal/web/components"
+
+templ Blog(){
+
+    <!DOCTYPE html>
+    <html lang="en">
+    @components.Head("Blog | Shahin")
+    <body>
+    @components.Header()
+    <main class="container blog">
+        <article class="post">
+        <h2>Storing messages</h2>
+        <p class="post-meta">April 26, 2025 • Thoughts</p>
+        <p>I did say not too long ago that it's unlikely that I post here. Anyway, I did not want to use email for contact, long story short, this website that was going to be a quick fun thing to do around midnight now has fully automated GDPR compliance, I think.</p>
+        <br>
+        <p>Its up to you to trust the auth put in place, the code is open sourced so you can decide for yourself. Although you don't know what I'm actually running. I could lie to you and run something totally different, the software you're interacting with currently you have no way of fully validating. At this point in time at least, to my knowledge.</p>
+        <br>
+        <p>My point is don't trust me, I wouldn't. Yes you're on a https website and your browser is telling you I'm a good boy using a certified domain. BUT it doesn't tell you that I terminate TLS after my ingress controller, 
+        because that is impossible for it to know. This means, that yes over the internet the data you send me is encrypted thanks to TLS (Transport Layer Security), ok good nobody can look at your data. BUT at soon as that request reaches my server
+        aka my old gaming computer, the encryption is terminated and my services internally communicate in http. MEANING your data is totally exposed internally on my network and all you have is my good character as hope and there's no evidence of this.  
+        </p>
+        <br>
+        <p>So, if you decide to send me a message, I have to authenticate you (GDPR reasons), use a dumb password that doesn't matter, thanks. At least until you see a blog post where I talk about full 
+        encryption internally in my network, but even then you shouldn't trust me. Thanks for reading!</p>
+        <br>
+        <p>All the best,</p>
+        <p>- Shahin</p>
+        </article>
+
+
+        <article class="post">
+        <h2>Hello, World!</h2>
+        <p class="post-meta">April 22, 2025 • Thoughts</p>
+        <p>Welcome to my blog! It's unlikely that I will post here, but if I ever start blogging, it will end up here.</p>
+        <br>
+        <p>I'm formally a data scientist. I deploy AI models that track critical infrastructre, and make operations run faster. Over the years, I've become increasingly drawn to the fundamentals of computer science and I spend a lot of time on the software that goes around putting AI models in production.</p>
+        <br>
+        <p>In my free time I mainly work on two projects, one is a app that will do everything, and the other is a tool that makes tracking the performance of your APIs easier.</p>
+
+        <p>– Shahin</p>
+        </article>
+    </main>
+
+    @components.Footer()
+    </body>
+    </html>
+}

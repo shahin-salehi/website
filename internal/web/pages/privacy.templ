@@ -1,0 +1,60 @@
+package pages 
+
+import "github.com/shahin-salehi/website/internal/web/components"
+
+templ Privacy(){
+    <!DOCTYPE html>
+
+    <html lang="en">
+    @components.Head("Privacy Policy | Conamur Software AB")
+    <body>
+    @components.Header()
+    <main class="container">
+        <h1>Privacy Policy</h1>
+        <p><strong>Last updated:</strong> April 24, 2025</p>
+
+        <p>This website is operated by Conamur Software AB. We respect your privacy and aim to be transparent and responsible in all aspects of data handling. This policy outlines what data we collect, why we collect it, how it’s used, and your rights under the General Data Protection Regulation (GDPR).</p>
+
+        <h2>What We Collect</h2>
+        <p>We only collect personal data during logged-in sessions. This includes:</p>
+        <ul>
+        <li>Your email address (used to create your account)</li>
+        <li>A securely hashed version of your password</li>
+        <li>Messages you submit while logged in</li>
+        </ul>
+
+        <p>No personal information is collected or stored from users who simply browse the website without logging in.</p>
+
+        <p>This approach is intentional. By only associating personal data with authenticated users, we ensure that we can fulfill your rights under the General Data Protection Regulation (GDPR), such as the ability to access, export, or delete your data in a secure and verifiable way.</p>
+
+
+        <h2>Session Cookies</h2>
+        <p>We use a single, essential cookie to maintain your login session. This cookie does not track you across websites, is not shared with third parties, and is used only to verify your identity while logged in.</p>
+
+        <h2>IP Addresses</h2>
+        <p>We do not store IP addresses directly. However, because this website is hosted behind standard web infrastructure, your IP address may appear in web server logs (e.g., NGINX logs) for operational and security purposes. These logs are retained only as long as necessary for system monitoring and abuse prevention.</p>
+
+        <h2>How Your Data Is Used</h2>
+        <p>Your account and messages are used solely to enable basic functionality on this website. We do not use your data for advertising, analytics, profiling, or third-party services.</p>
+
+        <h2>Data Retention</h2>
+        <p>Messages you submit while logged in are stored until you delete them. You may delete individual messages or your entire account at any time. Upon account deletion, all associated data is removed from our system.</p>
+
+        <h2>Your Rights</h2>
+        <p>As a user, you have the right to:</p>
+        <ul>
+        <li>Access your stored messages via your account</li>
+        <li>Delete individual messages or your entire account</li>
+        <li>Request the export of your messages in machine-readable format</li>
+        </ul>
+
+        <h2>Contact</h2>
+        <p>To request deletion, data export, or to ask a privacy-related question, please use our <a href="/privacy-request">Privacy Request Form</a>.</p>
+
+    </main>
+
+    @components.Footer()
+    </body>
+    </html>
+
+}

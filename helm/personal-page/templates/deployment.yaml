@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webserver 
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Values.deployment.name}}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.deployment.name }}
+    spec:
+      containers:
+      - name: {{ .Values.deployment.name }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: IfNotPresent
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        
+        env:
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+                name: postgres-secret
+                key: DATABASE_URL
+        - name: SESSION_KEY
+          valueFrom:
+            secretKeyRef:
+                name: session-key
+                key: SESSION_KEY
+        ports:
+        - containerPort: {{ .Values.deployment.container.port }}

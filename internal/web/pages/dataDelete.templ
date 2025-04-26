@@ -1,0 +1,24 @@
+package pages
+
+import "github.com/shahin-salehi/website/internal/web/components"
+
+templ DataDelete() {
+    <!DOCTYPE html>
+    <html lang="en">
+    @components.Head("Delete My Data | Shahin")
+
+    <body>
+        @components.Header()
+        <main class="container">
+            <h2>Delete Your Stored Data</h2>
+            <p class="warning">⚠️ This will permanently delete your messages, comments, and uploads. Your account will remain active.</p>
+
+            <form method="POST" action="/api/data-delete">
+                <button type="submit" class="btn danger">Yes, Delete My Data</button>
+            </form>
+            <p><a href="/">Cancel and return home</a></p>
+        </main>
+        @components.Footer()
+    </body>
+    </html>
+}

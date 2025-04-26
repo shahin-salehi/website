@@ -1,0 +1,26 @@
+package pages
+
+
+import "github.com/shahin-salehi/website/internal/web/components"
+
+
+templ AccountDeleteConfirm() {
+    <!DOCTYPE html>
+    <html lang="en">
+    @components.Head("Delete Account | Shahin")
+
+    <body>
+        @components.Header()
+        <main class="container">
+            <h2>Delete Your Account</h2>
+            <p class="warning">⚠️ This action is permanent and will delete your profile and associated data.</p>
+
+            <form method="POST" action="/api/account-delete">
+                <button type="submit" class="btn danger">Yes, Delete My Account</button>
+            </form>
+            <p><a href="/">Cancel and return home</a></p>
+        </main>
+        @components.Footer()
+    </body>
+    </html>
+}

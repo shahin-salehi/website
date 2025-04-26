@@ -1,0 +1,19 @@
+package pages
+
+import "github.com/shahin-salehi/website/internal/web/components"
+
+templ AccountDeleted() {
+    <!DOCTYPE html>
+    <html lang="en">
+    @components.Head("Account Deleted | Shahin")
+
+    <body>
+        @components.Header()
+        <main class="container">
+            <h2>Goodbye 👋</h2>
+            <p>Your account has been deleted. If this was a mistake, feel free to create a new one anytime.</p>
+        </main>
+        @components.Footer()
+    </body>
+    </html>
+}

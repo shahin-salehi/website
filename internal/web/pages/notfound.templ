@@ -1,0 +1,20 @@
+package pages
+
+import "github.com/shahin-salehi/website/internal/web/components"
+
+templ NotFound() {
+    <!DOCTYPE html>
+    <html lang="en">
+    @components.Head("Page Not Found | Shahin")
+
+    <body>
+        @components.Header()
+        <main class="container center-text">
+            <h1>404 🚫</h1>
+            <h2>Page Not Found</h2>
+            <p>Sorry, we couldn't find the page you were looking for. It might have been moved or deleted.</p> 
+        </main>
+        @components.Footer()
+    </body>
+    </html>
+}

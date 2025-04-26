@@ -1,0 +1,75 @@
+package components
+
+import (
+    "github.com/shahin-salehi/website/internal/middleware"
+    "context"
+) 
+
+
+func GetUserContext(ctx context.Context) string {
+	if theme, ok := ctx.Value(middleware.ContextUser).(string); ok {
+		return theme
+	}
+	return ""
+}
+templ Head(title string){
+    
+    <head>
+        <link rel="icon" type="image/svg+xml" href="/static/shahin-logo.svg">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>{title}</title>
+        <link rel="stylesheet" href="/static/styles.css" />
+    </head>
+}
+
+
+templ Header(){
+    
+    <header>
+        <nav class="container">
+            <h1 class="logo"><img src="/static/shahin-logo.svg" class="logo-img" /> شاهین </h1>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/blog" class="active">Blog</a></li>
+            <li><a href="/contact">Contact</a></li>
+        
+
+        if GetUserContext(ctx) != "" {
+            <li class="dropdown">
+                <span class="dropdown-toggle">👋 Hello, { ctx.Value(middleware.ContextUser).(string) } ⌄</span>
+                <ul class="dropdown-menu">
+                    <li>
+                        <form method="POST" action="/api/data-request" style="margin: 0;">
+                            <button type="submit" class="dropdown-button-link">Download My Data</button>
+                        </form>
+                    </li>
+                    <li><a href="/data-delete">Delete My Data</a></li>
+                    <li><a href="/account-delete">Delete My Account</a></li>
+                    <li>
+                        <form method="POST" action="/api/logout" style="margin: 0;">
+                            <button type="submit" class="dropdown-button-link">Log Out</button>
+                        </form>
+                    </li>
+                </ul>
+            </li>
+        } else {
+            <li><a href="/login">Login</a></li>
+            <li><a href="/signup" class="button-link">Sign up</a></li>
+        }
+        </ul>
+        </nav>
+    </header>
+
+}
+
+templ Footer(){
+
+    <footer>
+    <p>&copy; 2025 Conamur Software AB. Code licensed under <a href="https://opensource.org/licenses/MIT" target="_blank">MIT</a> · 
+    <a href="/privacy">Privacy Policy</a> 
+    </p>
+
+    <script src="/static/script.js"></script>
+    </footer>
+}

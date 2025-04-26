@@ -1,0 +1,36 @@
+package pages 
+
+import "github.com/shahin-salehi/website/internal/web/components"
+
+templ PrivacyRequest(){
+    <!DOCTYPE html>
+<html lang="en">
+@components.Head("Privacy Request | Conamur Software AB")
+<body>
+@components.Header()
+  <main class="container">
+    <h1>Privacy Request</h1>
+    <p>If you want to request deletion or export of your data, or you have questions about our privacy practices, you can send us a message below.</p>
+    <form action="/privacy-request" method="POST">
+      <label for="topic">Request Type</label>
+      <select id="topic" name="topic" required>
+        <option value="delete">Delete My Data</option>
+        <option value="export">Export My Data</option>
+        <option value="question">Other Question</option>
+      </select>
+
+      <label for="message">Your Message</label>
+      <textarea id="message" name="message" rows="6" required></textarea>
+
+      <label for="reference">Optional: Message Reference ID or Email (if you provided one)</label>
+      <input type="text" id="reference" name="reference" />
+
+      <button type="submit" class="btn">Send Request</button>
+    </form>
+  </main>
+
+  @components.Footer()
+</body>
+</html>
+
+}

@@ -1,0 +1,44 @@
+package pages
+
+import "github.com/shahin-salehi/website/internal/web/components"
+
+templ Signup(){
+    <!DOCTYPE html>
+    <html lang="en">
+    @components.Head("Sign Up | Shahin")
+    <body>
+    @components.Header()
+
+    <section class="container">
+    <div class="form-wrapper">
+        <div class="logo-container">
+            <img src="/static/shahin-logo.svg" alt="Falcon logo" class="form-logo" />
+          </div>          
+        <h2>Create an Account</h2>
+        <form action="/api/signup" method="POST" class="auth-form json-form" data-feedback-id="signup-feedback">
+
+        <label for="username">Username</label>
+        <input type="username" id="username" name="username" required />
+        
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required />
+    
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required />
+    
+        <button type="submit">Sign Up</button>
+        <div id="signup-feedback"></div>
+        </form>
+        <p class="note">
+        Already have an account?
+        <a href="/login">Log in here</a>.
+        </p>
+    </div>
+    </section>
+
+    @components.Footer() 
+    </body>
+    </html>
+
+
+}

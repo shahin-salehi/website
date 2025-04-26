@@ -1,0 +1,29 @@
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: homebuddy-ingress
+  namespace: homebuddy
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-body-size: "1m"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/limit-rpm: "20"
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - shahin.conamur-software.com
+    secretName: tls-key
+  rules:
+  - host: shahin.conamur-software.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: {{ .Values.service.name}}
+            port:
+              number: {{ .Values.service.port }} 
