@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"log/slog"
 	"net/http"
-	"strings"
 	"time"
 
 	"github.com/shahin-salehi/website/internal/types"
@@ -185,11 +184,11 @@ func (h *Handler) GetUserData(w http.ResponseWriter, r *http.Request) {
 
 	// timestamp
 	now := time.Now().UTC()
-	filename := "mydata-" + strings.ReplaceAll(now.Format(time.DateTime), " ", "_") + ".json"
+	filename := "mydata-" + now.Format("2006-01-02_15-04-05") + ".json"
 
 	w.Header().Set("Content-Type", "application/json")
 	// download
-	w.Header().Set("Content-Disposition", `attachment; filename=`+filename+`"`)
+	w.Header().Set("Content-Disposition", `attachment; filename="`+filename+`"`)
 	w.WriteHeader(http.StatusOK)
 
 	err = json.NewEncoder(w).Encode(data)
